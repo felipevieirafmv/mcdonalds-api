@@ -26,20 +26,19 @@ public partial class McDataBaseContext : DbContext
     public virtual DbSet<Store> Stores { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=CT-C-001YQ\\SQLEXPRESS01;Initial Catalog=McDataBase;Integrated Security=True;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ClientOrder>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ClientOr__3214EC2728B24B88");
+            entity.HasKey(e => e.Id).HasName("PK__ClientOr__3214EC27122F247A");
 
             entity.ToTable("ClientOrder");
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.DeliveryMoment).HasColumnType("datetime");
-            entity.Property(e => e.Moment).HasColumnType("datetime");
+            entity.Property(e => e.FinishMoment).HasColumnType("datetime");
             entity.Property(e => e.OrderCode)
                 .IsRequired()
                 .HasMaxLength(12)
@@ -54,7 +53,7 @@ public partial class McDataBaseContext : DbContext
 
         modelBuilder.Entity<ClientOrderItem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ClientOr__3214EC275D67E673");
+            entity.HasKey(e => e.Id).HasName("PK__ClientOr__3214EC27492642C5");
 
             entity.ToTable("ClientOrderItem");
 
@@ -75,7 +74,7 @@ public partial class McDataBaseContext : DbContext
 
         modelBuilder.Entity<MenuItem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__MenuItem__3214EC27F09DF501");
+            entity.HasKey(e => e.Id).HasName("PK__MenuItem__3214EC27F5B965E3");
 
             entity.ToTable("MenuItem");
 
@@ -95,7 +94,7 @@ public partial class McDataBaseContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Product__3214EC277BADA7CE");
+            entity.HasKey(e => e.Id).HasName("PK__Product__3214EC27CE19F992");
 
             entity.ToTable("Product");
 
@@ -112,7 +111,7 @@ public partial class McDataBaseContext : DbContext
 
         modelBuilder.Entity<Store>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Store__3214EC276CCC8942");
+            entity.HasKey(e => e.Id).HasName("PK__Store__3214EC27933FC141");
 
             entity.ToTable("Store");
 
