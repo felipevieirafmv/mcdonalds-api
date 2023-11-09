@@ -36,7 +36,7 @@ create table ClientOrder(
 	ID int identity primary key,
 	OrderCode varchar(12) not null,
 	StoreID int references Store(ID) not null,
-	Moment datetime not null,
+	FinishMoment datetime null,
 	DeliveryMoment datetime null
 );
 
@@ -45,3 +45,11 @@ create table ClientOrderItem(
 	ClientOrderID int references ClientOrder(ID) not null,
 	ProductID int references Product(ID) not null
 );
+
+insert into Product values ('Produto 1', null, 'Testando')
+
+insert into ClientOrder values ('123456789012', 1, null, null)
+
+insert into ClientOrderItem values (1, 1)
+
+select * from product
