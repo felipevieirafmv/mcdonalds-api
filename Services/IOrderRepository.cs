@@ -6,8 +6,8 @@ namespace McDonaldsAPI.Services;
 
 public interface IOrderRepository
 {
-    Task<string> CreateOrder(int store);
-    Task CancelOrder(int orderCode);
+    Task<int> CreateOrder(int storeId);
+    Task CancelOrder(int orderId);
     Task<List<Product>> GetMenu(int orderId);
     Task<List<Product>> GetOrderItems(int orderId);
     Task AddItem(int orderId, int productId);
